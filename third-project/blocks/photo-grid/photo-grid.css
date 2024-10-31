@@ -1,0 +1,32 @@
+.photo-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 16px;
+	margin: 0 48px 92px;
+}
+
+@media screen and (max-width: 1024px) {
+	.photo-grid {
+	  grid-template-columns: repeat(3, 1fr);
+      margin-bottom: calc(88px + (((100vw - 768px) * (92 - 88)) / (1024 - 768)));
+      margin-left: calc(24px + (((100vw - 768px) * (48 - 24)) / (1024 - 768)));
+      margin-right: calc(24px + (((100vw - 768px) * (48 - 24)) / (1024 - 768)));
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.photo-grid {
+	  grid-template-columns: repeat(2, 1fr);
+      margin-bottom: calc(64px + (((100vw - 320px) * (88 - 64)) / (768 - 320)));
+      margin-left: calc(16px + (((100vw - 320px) * (24 - 16)) / (768 - 320)));
+      margin-right: calc(16px + (((100vw - 320px) * (24 - 16)) / (768 - 320)));
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.photo-grid {
+	  grid-template-columns: 1fr;
+	  grid-gap: 12px;
+	  margin: 0 16px 64px;
+	}
+}

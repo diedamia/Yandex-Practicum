@@ -1,0 +1,7 @@
+.cards{
+    width: 920px;
+    display: flex;
+    flex-flow: row wrap;
+    column-gap: 100px;
+    align-items: flex-start;
+}

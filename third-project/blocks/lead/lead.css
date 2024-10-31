@@ -1,0 +1,25 @@
+.lead{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 56px 148px 0;
+}
+
+@media screen and (max-width: 1280px){
+    .lead{
+        margin: calc(48px + (((100vw - 1024px) * (56 - 48)) / (1280 - 1024)))
+        calc(48px + (((100vw - 1024px) * (148 - 48)) / (1280 - 1024))) 0;
+    }
+}
+@media screen and (max-width: 1024px){
+    .lead{
+        margin: 48px calc(((100vw - 768px) * 48) / (1024 - 768)) 0;
+    }
+}
+@media screen and (max-width: 768px){
+    .lead{
+        margin: 48px 0 0;
+    }
+}
+
+

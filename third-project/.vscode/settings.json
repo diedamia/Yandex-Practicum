@@ -1,0 +1,6 @@
+{
+    "files.autoSave": "onWindowChange",
+    "explorer.compactFolders": false,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.autoOpenDroppedFile": false
+}
