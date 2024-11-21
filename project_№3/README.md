@@ -8,4 +8,4 @@
 * Grid Layout
 * media-запросы
 
-Сайт доступен по [ссылке](https://diedamia.github.io/Yandex-Practicum/third-project/).
+Сайт доступен по [ссылке](https://diedamia.github.io/Yandex-Practicum/project_№3/).
