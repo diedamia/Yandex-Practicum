@@ -1,3 +1,3 @@
 # Проектная работа Mesto
 
-студент, когорта, стэк
+https://diedamia.github.io/Yandex-Practicum/project_№4/
