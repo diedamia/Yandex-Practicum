@@ -2,10 +2,9 @@ import '../pages/index.css';
 import { initialCards } from './data.js';
 import { openModal, closeModal } from './modal.js';
 import { createCard } from './cards.js';
-import { enableValidation } from './validate.js';
+import { enableValidation, checkValid } from './validate.js';
 
 // DOM узлы
-const content = document.querySelector('.content');
 const cardsContainer = document.querySelector('.places__list');
 
 // Поп-апы
@@ -39,11 +38,14 @@ const profileFormElement = profilePopup.querySelector('.popup__form');
 // Поля формы профиля
 const nameInput = profileFormElement.querySelector('.popup__input_type_name');
 const jobInput = profileFormElement.querySelector('.popup__input_type_description');
+nameInput.value = profileTitle.textContent;
+jobInput.value = profileDescription.textContent;
 
 // Открытие поп-апа редактирования профиля
 profileButton.addEventListener('click', () => {
     nameInput.value = profileTitle.textContent;
     jobInput.value = profileDescription.textContent;
+    checkValid(profileFormElement, validationSettings);
     openModal(profilePopup);
 })
 
@@ -56,7 +58,7 @@ function handleProfileFormSubmit(evt) {
 }
 
 // Прикрепление обработчика к форме
-profileFormElement.addEventListener('submit', handleProfileFormSubmit); 
+profileFormElement.addEventListener('button', handleProfileFormSubmit); 
 
 ////Поп-ап добавления карточки///
 
@@ -72,6 +74,7 @@ cardButton.addEventListener('click', (evt) => {
     evt.preventDefault();
     cardNameInput.value = '';
     cardUrlInput.value = '';
+    checkValid(cardFormElement, validationSettings);
     openModal(cardPopup);
 })
 
@@ -84,7 +87,7 @@ function handleCardFormSubmit(evt) {
 }
 
 // Прикрепление обработчика к форме
-cardFormElement.addEventListener('submit', handleCardFormSubmit); 
+cardFormElement.addEventListener('button', handleCardFormSubmit); 
 
 
 //Поп-ап с картинкой
@@ -103,5 +106,15 @@ initialCards.forEach(function ({name, link}) {
     cardsContainer.append(cardData);
 });
 
-enableValidation();
+// Создание объекта с настройками валидации
+const validationSettings = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_inactive',
+    inputErrorClass: 'popup__input_error',
+    errorClass: 'popup__error_active'
+}
+  
+enableValidation(validationSettings);
 

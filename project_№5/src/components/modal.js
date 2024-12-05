@@ -1,24 +1,24 @@
-/*function closeByOverlay(event) {
-    closeModal(event.target);
-}
-
-function addOverlayListener() {
-    const popup = document.querySelector('.popup_is-opened');
-    popup.addEventListener('click', closeByOverlay);
-}
-
-function removeOverlayListener() {
-    const popup = document.querySelector('.popup_is-opened');
-    popup.removeEventListener('click', closeByOverlay);
-}
-
 function closeByEsc(evt) {
     if (evt.key === 'Escape') {
         const openedPopup = document.querySelector('.popup_is-opened');
         closeModal(openedPopup);
     }
 }
-*/
+
+function addClickListener() {
+    const openedPopup = document.querySelector('.popup_is-opened');
+    openedPopup.addEventListener('click', closeByOverlay);
+}
+
+function removeClickListener() {
+    const openedPopup = document.querySelector('.popup_is-opened');
+    openedPopup.removeEventListener('click', closeByOverlay);
+}
+
+function closeByOverlay(evt) {
+    closeModal(evt.target);
+}
+
 // Функция открытия поп-апа
 function openModal(popup) {      
     popup.classList.add('popup_is-opened');
@@ -26,24 +26,24 @@ function openModal(popup) {
         closeModal(popup);
     });
 
-    /*const popupContent = popup.querySelector('.popup__content');
+    document.addEventListener('keydown', closeByEsc);
 
-    document.addEventListener('keydown', closeByEscape);
-
+    const popupWindow = popup.querySelector('.popup__content');
+    popupWindow.addEventListener('mouseout', addClickListener);
+    popupWindow.addEventListener('mouseover', removeClickListener);
     popup.addEventListener('click', closeByOverlay);
-    popupContent.addEventListener('mouseleave', addOverlayListener);
-    popupContent.addEventListener('mouseenter', removeOverlayListener);*/
 };
 
 // Функция закрытия поп-апа
-function closeModal(popup) {      
+function closeModal(popup) {     
     popup.classList.remove('popup_is-opened');
 
-    /*const popupContent = popup.querySelector('.popup__content');
+    document.removeEventListener('keydown', closeByEsc);
+
+    const popupWindow = popup.querySelector('.popup__content');
     popup.removeEventListener('click', closeByOverlay);
-    popupContent.removeEventListener('mouseleave', addOverlayListener);
-    popupContent.removeEventListener('mouseenter', removeOverlayListener);
-    document.removeEventListener('keydown', closeByEscape);*/
+    popupWindow.removeEventListener('mouseout', addClickListener);
+    popupWindow.removeEventListener('mouseover', removeClickListener);
 };
 
 
